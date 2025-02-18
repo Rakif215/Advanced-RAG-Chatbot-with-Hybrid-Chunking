@@ -31,7 +31,7 @@ You can install these using pip:
 
 ```bash
 pip install -r requirements.txt  # Or install each package individually
-
+```
 How to Run
 Start Ollama: Run the Ollama server with the specified model:
 
