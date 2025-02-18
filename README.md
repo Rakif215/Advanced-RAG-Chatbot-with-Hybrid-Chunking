@@ -35,12 +35,12 @@ pip install -r requirements.txt  # Or install each package individually
 # How to Run
  * **Start Ollama:** Run the Ollama server with the specified model:
 
-'''Bash
+```Bash
 
 ollama run deepseek-r1:7b  # Or your chosen model
-'''
+```
 * **Run the Chatbot:** Execute the Python script:
 
-'''Bash
+```Bash
 python chatbot.py
-'''
+```
