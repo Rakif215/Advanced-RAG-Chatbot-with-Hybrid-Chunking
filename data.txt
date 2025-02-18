@@ -1,0 +1,33 @@
+## Advanced Chunking Techniques for RAG Chatbots
+
+This document explores advanced chunking techniques crucial for building effective Retrieval Augmented Generation (RAG) chatbots.  Proper chunking significantly impacts information retrieval and the quality of chatbot responses.
+
+### Traditional vs. Advanced Chunking
+
+Traditional methods (fixed chunk sizes, paragraph splits) often fall short.  They can break sentences, separate related ideas, and lead to poor retrieval.  Advanced techniques, as demonstrated here, address these limitations.
+
+### Chunking Strategies Implemented
+
+#### 1. Combined Character and Recursive Splitting
+
+We combine these for an initial text breakdown:
+
+*   **Character Splitter:** Divides text into fixed-length chunks.  Useful for initial processing.
+*   **Recursive Splitter:**  Recursively splits based on separators (`\n\n`, `\n`, ` `), attempting to keep sentences and paragraphs intact. This provides a good balance between chunk size and semantic coherence.
+
+#### 2. Specialized Splitters for Structured Content
+
+These handle specific document formats:
+
+*   **Markdown Splitter:**  Parses Markdown syntax, splitting by headings, lists, etc. This maintains logical document structure.  Example:
+
+```markdown
+# My Markdown Document
+
+## Section 1
+
+This is some text.
+
+## Section 2
+
+More text here.
