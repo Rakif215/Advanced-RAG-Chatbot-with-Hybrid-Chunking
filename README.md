@@ -44,3 +44,38 @@ ollama run deepseek-r1:7b  # Or your chosen model
 ```Bash
 python chatbot.py
 ```
+
+## Data File (`data.txt`)
+
+The `data.txt` file contains the data that the chatbot will use to answer questions. It should include the text you want the chatbot to "know." You can include a mix of regular text, Markdown, Python code, and JavaScript code.
+
+
+## Chunking Strategies
+
+The chatbot uses a combination of chunking methods:
+
+### 1. **Character and Recursive Splitting**
+
+These methods are used as a first pass to break down the text into smaller chunks:
+- **Character Splitting** divides the text into fixed-size chunks.
+- **Recursive Splitting** uses separators like newlines and spaces to keep related sentences and paragraphs together.
+
+### 2. **Markdown/Python/JavaScript Splitters**
+
+Specialized splitters are applied to handle structured content:
+- **Markdown Splitter**: Parses Markdown syntax.
+- **Python Splitter**: Splits Python code by functions and classes.
+- **JavaScript Splitter**: Handles JavaScript code similarly.
+
+### 3. **Semantic Chunking**
+
+This is the most important step. It uses sentence embeddings and a similarity threshold to combine semantically related chunks. This ensures that chunks contain related information, even if they were initially separated by the other splitters. Semantic chunking significantly improves the context and relevance of the retrieved information.
+
+## Vectorstore
+
+The FAISS vectorstore is created from the chunks and saved to disk. This allows for efficient similarity search when answering questions. The vectorstore stores the embeddings of the chunks, enabling the chatbot to quickly find the most relevant chunks for a given query.
+
+## Model
+
+The chatbot uses the `deepseek-r1:7b Ollama` model (or a model you specify). You can change the `MODEL_NAME` variable in the `chatbot.py` file to use a different model.
+
